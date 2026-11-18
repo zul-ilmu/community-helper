@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Proposal Helper</title>
+<style>
+  :root {
+    --bg: #f6f8f7;
+    --card: #ffffff;
+    --ink: #24312c;
+    --muted: #5c6b64;
+    --accent: #2f7d5d;
+    --accent-soft: #e7f2ec;
+    --warn: #b3591e;
+    --warn-bg: #fdf1e7;
+    --line: #dde5e1;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 22px 20px;
+  }
+  header h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  header p { margin: 0; opacity: .9; font-size: .95rem; }
+  main { max-width: 820px; margin: 0 auto; padding: 20px 16px 60px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-top: 22px;
+  }
+  .step-tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  h2 { margin: 0 0 4px; font-size: 1.2rem; }
+  .section-sub { color: var(--muted); font-size: .92rem; margin: 0 0 16px; }
+  label { display: block; font-weight: 600; margin: 14px 0 4px; font-size: .95rem; }
+  .hint { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
+  textarea, input[type=text] {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--ink);
+    background: #fbfdfc;
+    resize: vertical;
+  }
+  textarea:focus, input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+
+  .draft {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    background: #fbfdfc;
+    min-height: 200px;
+  }
+  .draft h3 { margin: 18px 0 6px; font-size: 1.02rem; color: var(--accent); }
+  .draft h3:first-child { margin-top: 0; }
+  .draft p { margin: 0 0 8px; white-space: pre-wrap; }
+  .draft .placeholder { color: var(--warn); background: var(--warn-bg); border-radius: 4px; padding: 1px 5px; font-style: italic; }
+
+  .weak-flag {
+    background: var(--warn-bg);
+    border-left: 4px solid var(--warn);
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 6px 0;
+    font-size: .93rem;
+  }
+  .ok-flag {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 6px 0;
+    font-size: .93rem;
+  }
+  .check-note { color: var(--muted); font-size: .9rem; }
+  .check-count { font-weight: 700; color: var(--accent); }
+  footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 10px 16px 30px; }
+  @media (max-width: 520px) {
+    section { padding: 16px 14px; }
+    header { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Community Proposal Helper</h1>
+  <p>Answer a few questions, get a draft funding proposal you can edit right here. Nothing is saved — it lives only on this screen.</p>
+</header>
+
+<main>
+
+  <!-- SECTION 1 -->
+  <section id="questions">
+    <span class="step-tag">Step 1</span>
+    <h2>Quick Questions</h2>
+    <p class="section-sub">The example answers below are made up to show how it works. Replace them with your group's real details.</p>
+
+    <label for="q-group">1. What is your group called?</label>
+    <p class="hint">Example: a neighbourhood committee in Selangor</p>
+    <input type="text" id="q-group" value="Persatuan Jiran Taman Melati, Hulu Langat">
+
+    <label for="q-purpose">2. What do you want to do, and why does it matter?</label>
+    <p class="hint">Example: a small project that helps people nearby</p>
+    <textarea id="q-purpose" rows="3">We want to turn an abandoned corner lot in our taman into a small community garden. Many elderly residents in our area live alone and have few places to meet, and the lot has become a dumping ground that attracts mosquitoes.</textarea>
+
+    <label for="q-who">3. Who will benefit, and roughly how many people?</label>
+    <p class="hint">Example: which neighbours or groups gain from it</p>
+    <textarea id="q-who" rows="2">About 60 households in Taman Melati, especially around 25 elderly residents and families with young children who currently have no shared outdoor space.</textarea>
+
+    <label for="q-activity">4. What will you actually do, step by step?</label>
+    <p class="hint">Example: the main activities of the project</p>
+    <textarea id="q-activity" rows="3">1) Clear and clean the lot with volunteer help from residents. 2) Build 12 raised planting beds for vegetables and herbs. 3) Run a monthly gardening morning where residents share harvest and composting tips.</textarea>
+
+    <label for="q-money">5. What kind of support or funding do you need?</label>
+    <p class="hint">Example: the type of help you are asking for — do not enter real figures here, just describe what the money or support is for</p>
+    <textarea id="q-money" rows="3">We are asking for support to buy soil, seeds, timber for the planting beds, basic tools, and a simple water tank. Most labour will come from resident volunteers, so we only need help with materials.</textarea>
+
+    <label for="q-team">6. Who will run the project?</label>
+    <p class="hint">Example: which people or roles are responsible</p>
+    <textarea id="q-team" rows="2">The project will be led by our committee chairperson, Encik Rahman, with two resident volunteers coordinating the gardening schedule and a treasurer keeping simple records of what is bought.</textarea>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="draft-section">
+    <span class="step-tag">Step 2</span>
+    <h2>Draft Proposal</h2>
+    <p class="section-sub">This draft fills in automatically from your answers above. Edit it freely — your edits stay on screen.</p>
+    <div id="draft" class="draft" contenteditable="true" aria-label="Editable proposal draft"></div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="check-section">
+    <span class="step-tag">Step 3</span>
+    <h2>Final Check</h2>
+    <p class="section-sub">A quick scan of your draft — blank or very short parts are flagged below so you know what to fix.</p>
+    <p class="check-note" id="check-summary"></p>
+    <div id="checklist"></div>
+  </section>
+
+</main>
+
+<footer>Community Proposal Helper · sample content only · nothing is saved between visits</footer>
+
+<script>
+(function () {
+  var FIELDS = [
+    { id: "q-group",    key: "group",    label: "Group name" },
+    { id: "q-purpose",  key: "purpose",  label: "Purpose / why it matters" },
+    { id: "q-who",      key: "who",      label: "Who benefits" },
+    { id: "q-activity", key: "activity", label: "Activities" },
+    { id: "q-money",    key: "money",    label: "Support needed" },
+    { id: "q-team",     key: "team",     label: "Project team" }
+  ];
+
+  var draftEl = document.getElementById("draft");
+  var checklistEl = document.getElementById("checklist");
+  var summaryEl = document.getElementById("check-summary");
+  var userEdited = false; // stop auto-updates once the group edits the draft by hand
+
+  function getValue(f) { return document.getElementById(f.id).value.trim(); }
+
+  function para(text) {
+    var p = document.createElement("p");
+    p.textContent = text;
+    return p;
+  }
+
+  function placeholderPara(label) {
+    var p = document.createElement("p");
+    p.setAttribute("data-placeholder", label);
+    p.className = "placeholder";
+    p.textContent = "[" + label + " — go back to Step 1 and fill this in]";
+    return p;
+  }
+
+  function buildDraft(v) {
+    var frag = document.createDocumentFragment();
+
+    var h = document.createElement("h3");
+    h.textContent = "1. Who We Are";
+    frag.appendChild(h);
+    frag.appendChild(v.group ? para(v.group + " is a community group that cares about the wellbeing of our neighbourhood.") : placeholderPara("Group name"));
+
+    h = document.createElement("h3");
+    h.textContent = "2. What We Want To Do";
+    frag.appendChild(h);
+    frag.appendChild(v.purpose ? para(v.purpose) : placeholderPara("Purpose"));
+
+    h = document.createElement("h3");
+    h.textContent = "3. Who Will Benefit";
+    frag.appendChild(h);
+    frag.appendChild(v.who ? para(v.who) : placeholderPara("Beneficiaries"));
+
+    h = document.createElement("h3");
+    h.textContent = "4. Our Plan";
+    frag.appendChild(h);
+    frag.appendChild(v.activity ? para(v.activity) : placeholderPara("Activities"));
+
+    h = document.createElement("h3");
+    h.textContent = "5. Support We Are Asking For";
+    frag.appendChild(h);
+    frag.appendChild(v.money ? para(v.money) : placeholderPara("Support needed"));
+
+    h = document.createElement("h3");
+    h.textContent = "6. Who Will Run It";
+    frag.appendChild(h);
+    frag.appendChild(v.team ? para(v.team) : placeholderPara("Project team"));
+
+    return frag;
+  }
+
+  function renderDraft() {
+    var v = {};
+    FIELDS.forEach(function (f) { v[f.key] = getValue(f); });
+    draftEl.textContent = "";
+    draftEl.appendChild(buildDraft(v));
+    renderChecklist(v);
+  }
+
+  function flagItem(label, message) {
+    var d = document.createElement("div");
+    d.className = "weak-flag";
+    d.innerHTML = "<strong>" + label + ":</strong> " + message;
+    return d;
+  }
+
+  function okItem(label) {
+    var d = document.createElement("div");
+    d.className = "ok-flag";
+    d.innerHTML = "<strong>" + label + ":</strong> looks filled in.";
+    return d;
+  }
+
+  function renderChecklist(v) {
+    checklistEl.textContent = "";
+    var problems = 0;
+
+    FIELDS.forEach(function (f) {
+      var val = v[f.key];
+      if (!val) {
+        problems++;
+        checklistEl.appendChild(flagItem(f.label, "This part is still blank. Fill it in above or type it straight into the draft."));
+      } else if (val.length < 25) {
+        problems++;
+        checklistEl.appendChild(flagItem(f.label, "This part is very short (" + val.length + " characters). Add a bit more detail so reviewers understand it."));
+      } else {
+        checklistEl.appendChild(okItem(f.label));
+      }
+    });
+
+    if (problems === 0) {
+      summaryEl.innerHTML = "All six parts look filled in. <span class='check-count'>Nice work!</span> Read the draft once more from top to bottom before you send it.";
+    } else {
+      summaryEl.innerHTML = "<span class='check-count'>" + problems + "</span> part" + (problems > 1 ? "s" : "") + " still need" + (problems > 1 ? "" : "s") + " work before this draft is ready to send.";
+    }
+  }
+
+  FIELDS.forEach(function (f) {
+    document.getElementById(f.id).addEventListener("input", function () {
+      if (!userEdited) renderDraft();
+    });
+  });
+
+  // If the group edits the draft by hand, stop auto-overwriting their words.
+  draftEl.addEventListener("input", function () { userEdited = true; });
+
+  renderDraft();
+})();
+</script>
+
+</body>
+</html>
